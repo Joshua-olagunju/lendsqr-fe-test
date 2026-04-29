@@ -1,0 +1,118 @@
+.topbar {
+  height: 100px;
+  background: #ffffff;
+  opacity: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0px 1px 2px rgba(33, 63, 125, 0.06);
+  box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
+}
+.topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 180px;
+}
+.topbar__left .topbar__logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.topbar__left .topbar__logo {
+  font-size: 34px;
+  font-weight: 600;
+  color: #213f7d;
+  margin: 0;
+}
+.topbar__left .topbar__search {
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 1024px) {
+  .topbar__left .topbar__search {
+    display: none;
+  }
+}
+.topbar__left .topbar__search-icon {
+  background-color: #39cdcc;
+  width: 56px;
+  height: 40px;
+  color: #ffffff;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.topbar__left input {
+  border: 1px solid rgba(33, 63, 125, 0.2);
+  border-right: none;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  width: 300px;
+  height: 35px;
+  font-size: 14px;
+  font-family: "Work Sans", sans-serif;
+}
+.topbar__left input::-moz-placeholder {
+  color: #545f7d;
+  opacity: 0.5;
+  padding-left: 1rem;
+}
+.topbar__left input::placeholder {
+  color: #545f7d;
+  opacity: 0.5;
+  padding-left: 1rem;
+}
+.topbar__left input:focus {
+  outline: none;
+  border-color: #39cdcc;
+}
+.topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.topbar__right .docs-link {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  text-decoration: underline;
+  color: #545f7d;
+  cursor: pointer;
+  margin-right: 30px;
+}
+.topbar__right .user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.topbar__right .user .avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 1024px) {
+  .topbar__right {
+    display: none;
+  }
+}
+.topbar .mobile-menu {
+  display: none;
+}
+@media screen and (max-width: 1024px) {
+  .topbar .mobile-menu {
+    display: block;
+    color: #213f7d;
+  }
+}/*# sourceMappingURL=topbar.css.map */
