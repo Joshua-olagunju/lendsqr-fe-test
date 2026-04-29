@@ -1,73 +1,93 @@
-# React + TypeScript + Vite
+# Lendsqr Frontend Test (React + TypeScript + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a frontend implementation of the Lendsqr Admin Dashboard as part of the Lendsqr Engineering Assessment.
 
-Currently, two official plugins are available:
+It focuses on building a pixel-close UI based on Figma, with reusable components, clean architecture, and responsive design.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- Vite
+- SCSS
+- React Router DOM
+- React Icons
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📌 Features Implemented
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Login Page UI
+- Dashboard Layout (Sidebar + Topbar)
+- Users Table with dynamic data rendering
+- Pagination with ellipsis support
+- Action Menu (View Details, Blacklist User, Activate User)
+- User Details Page (via navigation + localStorage)
+- Responsive design (desktop + tablet + mobile support)
+- Component-based architecture
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📁 Project Structure
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+src/
+│
+├── components/
+│ ├── Sidebar/
+│ ├── Topbar/
+│ ├── UsersTable/
+│  
+│
+├── pages/
+│ ├── Login/
+│ ├── Users/
+│ ├── UserDetails/
+│
+├── data/
+├── styles/
+├── utils/
+└── App.tsx
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🧠 Key Implementation Details
+
+- User data is currently mocked (500 records simulation ready)
+- Selected user is stored using `localStorage`
+- Pagination dynamically calculates pages and supports ellipsis
+- Action menu opens upward or downward based on viewport space
+- SCSS used for modular and maintainable styling
+
+---
+
+## 🎯 Assessment Focus Areas
+
+- UI pixel accuracy to Figma
+- Clean React + TypeScript structure
+- Component reusability
+- Pagination logic
+- Responsive design
+- Code readability and organization
+
+---
+
+## ▶️ Getting Started
+
+### Install dependencies
+
+```bash
+npm install
+Run development server
+npm run dev
+📦 Build for production
+npm run build
+👨‍💻 Author
+
+Joshua Olagunju - Frontend Developer
+
+
+---
+
 ```
