@@ -6,8 +6,8 @@ export const users = Array.from({ length: 500 }, (_, index) => {
   return {
     id: index + 1,
     organization: orgs[index % orgs.length],
-    username: `user${index + 1}`,
-    email: `user${index + 1}@mail.com`,
+    username: `Customer${index + 1}`,
+    email: `Customer${index + 1}@mail.com`,
     phone: `080${Math.floor(10000000 + Math.random() * 90000000)}`,
     dateJoined: new Date(
       2023,
