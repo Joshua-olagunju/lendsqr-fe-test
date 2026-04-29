@@ -2,7 +2,9 @@ export const users = Array.from({ length: 500 }, (_, index) => {
   const statuses = ["Active", "Pending", "Blacklisted", "Inactive"];
 
   const orgs = ["Lendsqr", "Interswitch", "Flutterwave", "Opay"];
-
+  // =================================
+  // Function to generate random user data for testing purposes
+  //==================================
   return {
     id: index + 1,
     organization: orgs[index % orgs.length],
@@ -13,7 +15,16 @@ export const users = Array.from({ length: 500 }, (_, index) => {
       2023,
       Math.floor(Math.random() * 12),
       Math.floor(Math.random() * 28) + 1,
-    ).toLocaleDateString(),
+      Math.floor(Math.random() * 24),
+      Math.floor(Math.random() * 60),
+    ).toLocaleString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    }),
     status: statuses[index % statuses.length],
   };
 });

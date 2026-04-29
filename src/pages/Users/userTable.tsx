@@ -7,8 +7,11 @@ import { userTableHeaders } from "./userTableHeaders";
 import { useState } from "react";
 import ActionMenu from "../../utils/hooks/actionBar";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
-
 import { useNavigate } from "react-router-dom";
+
+// ===================================================
+//  Component for the user table with pagination and action menu
+// ===================================================
 const UsersTable = () => {
   const [activeRow, setActiveRow] = useState<number | null>(null);
   const [openUpward, setOpenUpward] = useState(false);
@@ -17,8 +20,9 @@ const UsersTable = () => {
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
 
     const spaceBelow = window.innerHeight - rect.bottom;
-
+    // ==============================================
     // if not enough space below → open upward
+    // ==============================================
     if (spaceBelow < 150) {
       setOpenUpward(true);
     } else {
@@ -28,6 +32,9 @@ const UsersTable = () => {
     setActiveRow(activeRow === id ? null : id);
   };
 
+  // ===================================================
+  // Pagination Logic
+  // ===================================================
   const [currentPage, setCurrentPage] = useState(1);
 
   const itemsPerPage = 10;
@@ -41,6 +48,9 @@ const UsersTable = () => {
 
   const currentUsers = users.slice(startIndex, endIndex);
 
+  // ===================================================
+  //  Function to calculate page numbers with ellipses
+  // ===================================================
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
 
@@ -82,56 +92,125 @@ const UsersTable = () => {
     return pages;
   };
   const pages = getPageNumbers();
+  // ===================================================
+  //  State and function to manage filter dropdowns for each column
+  // ===================================================
+  const [openFilter, setOpenFilter] = useState<string | null>(null);
 
+  const toggleFilter = (label: string) => {
+    setOpenFilter((prev) => (prev === label ? null : label));
+  };
+  // ===================================================
+  // Part that is rendered to the web
+  // ===================================================
   return (
-    <div className="table-card">
-      <table className="users-table">
-        <thead>
-          <tr>
-            {userTableHeaders.map((header) => (
-              <th key={header.label}>
-                <div className="th-content">
-                  <span>{header.label}</span>
-                  <RiFilter3Line size={16} />
-                </div>
-              </th>
-            ))}
-          </tr>
-        </thead>
+    <>
+      <div className="table-card">
+        <table className="users-table">
+          <thead>
+            <tr>
+              {userTableHeaders.map((header) => (
+                <th key={header.label} style={{ position: "relative" }}>
+                  <div className="th-content">
+                    <span>{header.label}</span>
 
-        <tbody>
-          {currentUsers.map((user: (typeof users)[number]) => (
-            <tr key={user.id}>
-              <td>{user.organization}</td>
-              <td>{user.username}</td>
-              <td>{user.email}</td>
-              <td>{user.phone}</td>
-              <td>{user.dateJoined}</td>
-              <td>
-                <span className={`status ${user.status.toLowerCase()}`}>
-                  {user.status}
-                </span>
-              </td>
-              <td className="action_icon">
-                <IoMdMore
-                  size={20}
-                  onClick={(e) => handleMenu(e, user.id)}
-                  className="icon_menu"
-                />
+                    <RiFilter3Line
+                      size={16}
+                      onClick={() => toggleFilter(header.label)}
+                      style={{ cursor: "pointer" }}
+                    />
+                  </div>
 
-                {activeRow === user.id && (
-                  <ActionMenu
-                    direction={openUpward ? "up" : "down"}
-                    user={user}
-                    navigate={navigate}
-                  />
-                )}
-              </td>
+                  {openFilter === header.label && (
+                    <div
+                      className="filter-dropdown"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <form className="filter-form">
+                        <div className="filter-field">
+                          <label>Organization</label>
+                          <select>
+                            <option>Select</option>
+                            <option>Lendsqr</option>
+                            <option>Irorun</option>
+                          </select>
+                        </div>
+
+                        <div className="filter-field">
+                          <label>Username</label>
+                          <input placeholder="User" />
+                        </div>
+
+                        <div className="filter-field">
+                          <label>Email</label>
+                          <input placeholder="Email" />
+                        </div>
+
+                        <div className="filter-field">
+                          <label>Date</label>
+                          <input type="date" />
+                        </div>
+
+                        <div className="filter-field">
+                          <label>Phone Number</label>
+                          <input placeholder="Phone number" />
+                        </div>
+
+                        <div className="filter-field">
+                          <label>Status</label>
+                          <select>
+                            <option>Select</option>
+                            <option>Active</option>
+                            <option>Inactive</option>
+                            <option>Pending</option>
+                          </select>
+                        </div>
+
+                        <div className="filter-buttons">
+                          <button type="reset">Reset</button>
+                          <button type="submit">Filter</button>
+                        </div>
+                      </form>
+                    </div>
+                  )}
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
 
+          <tbody>
+            {currentUsers.map((user: (typeof users)[number]) => (
+              <tr key={user.id}>
+                <td>{user.organization}</td>
+                <td>{user.username}</td>
+                <td>{user.email}</td>
+                <td>{user.phone}</td>
+                <td>{user.dateJoined}</td>
+                <td>
+                  <span className={`status ${user.status.toLowerCase()}`}>
+                    {user.status}
+                  </span>
+                </td>
+                <td className="action_icon">
+                  <IoMdMore
+                    size={20}
+                    onClick={(e) => handleMenu(e, user.id)}
+                    className="icon_menu"
+                  />
+
+                  {activeRow === user.id && (
+                    <ActionMenu
+                      direction={openUpward ? "up" : "down"}
+                      user={user}
+                      navigate={navigate}
+                    />
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <div className="pagination">
         {/* LEFT TEXT */}
         <div className="pagination__info">
@@ -143,6 +222,7 @@ const UsersTable = () => {
         <div className="pagination__controls">
           {/* LEFT ARROW */}
           <button
+            className="btn"
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           >
             <IoChevronBack />
@@ -165,6 +245,7 @@ const UsersTable = () => {
 
           {/* RIGHT ARROW */}
           <button
+            className="btn"
             onClick={() =>
               setCurrentPage((prev) => Math.min(prev + 1, totalPages))
             }
@@ -173,7 +254,7 @@ const UsersTable = () => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

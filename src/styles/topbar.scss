@@ -104,6 +104,10 @@
         justify-content: center;
         align-items: center;
       }
+      .header_arrow {
+        color: #545f7d;
+        margin-bottom: 0!important;
+      } 
     }
 
     @media screen and (max-width: 1024px  ) {
@@ -118,4 +122,6 @@
       color: #213f7d;
     }
   }
+
+  
 }

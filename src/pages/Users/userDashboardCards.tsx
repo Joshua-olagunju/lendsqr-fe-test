@@ -1,6 +1,8 @@
 // src/components/DashboardCards/DashboardCards.tsx
 import { userDashboardCards } from "../../data/userDashboardCards";
-
+// ===============================================================================
+//    Data for the user dashboard cards, including title, value, icon, and styling
+// ===============================================================================
 const UserDashboardCards = () => {
   return (
     <div className="cards">

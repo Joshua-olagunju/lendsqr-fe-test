@@ -1,6 +1,9 @@
 import { FaRegBell } from "react-icons/fa";
-import { IoMdArrowDropdown, IoIosSearch, IoMdMenu } from "react-icons/io";
-
+import { IoIosSearch, IoMdMenu } from "react-icons/io";
+import { TiArrowSortedDown } from "react-icons/ti";
+// ===============================================================================
+//    Topbar component that includes the logo, search bar, notification icon, and user profile section
+// ===============================================================================
 const Topbar = () => {
   return (
     <div className="topbar">
@@ -28,7 +31,7 @@ const Topbar = () => {
           </div>
           <span style={{ fontSize: "14px" }}>Adedeji</span>
           <span>
-            <IoMdArrowDropdown size={16} style={{ margin: "0" }} />
+            <TiArrowSortedDown size={16} className="header_arrow" />
           </span>
         </div>
       </div>

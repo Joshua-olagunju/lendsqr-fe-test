@@ -73,7 +73,7 @@ const UserDetails = () => {
   // ===================================================
   return (
     <>
-      <div className="back_to_users">
+      <div onClick={() => window.history.back()} className="back_to_users">
         <RiArrowLeftLongLine size={24} /> Back to Users
       </div>
       <div className="userDetails">
