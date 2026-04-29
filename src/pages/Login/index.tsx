@@ -37,7 +37,7 @@ const Login = () => {
     setTimeout(() => {
       setLoading(false);
       // Redirect to dashboard
-      navigate("/dashboard");
+      navigate("/users");
     }, 1500);
   };
 
