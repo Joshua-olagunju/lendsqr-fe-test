@@ -3,12 +3,20 @@ import { IoChevronDownSharp } from "react-icons/io5";
 import { FaBriefcase } from "react-icons/fa";
 import { FiHome } from "react-icons/fi";
 import { sidebarData } from "../../data/sidebarData";
-// ===============================================================================
-//    Sidebar component that renders navigation links based on the provided sidebar data
-// ===============================================================================
-const Sidebar = () => {
+
+interface SidebarProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+const Sidebar = ({ open, onClose }: SidebarProps) => {
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${open ? "open" : ""}`}>
+      {/* CLOSE BUTTON (mobile only) */}
+      <button className="sidebar__close" onClick={onClose}>
+        ✕
+      </button>
+
       {/* Switch Org */}
       <div className="sidebar__switch-org">
         <FaBriefcase size={18} />
@@ -31,7 +39,6 @@ const Sidebar = () => {
             {section.links.map((link) => {
               const Icon = link.icon;
 
-              // if it's active → allow navigation
               if (link.active) {
                 return (
                   <NavLink to={link.path} key={link.name}>
@@ -41,7 +48,6 @@ const Sidebar = () => {
                 );
               }
 
-              // if not active → just render as disabled
               return (
                 <div key={link.name} className="sidebar__disabled">
                   <Icon size={18} />

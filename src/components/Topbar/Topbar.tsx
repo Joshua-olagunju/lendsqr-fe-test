@@ -1,10 +1,12 @@
 import { FaRegBell } from "react-icons/fa";
 import { IoIosSearch, IoMdMenu } from "react-icons/io";
 import { TiArrowSortedDown } from "react-icons/ti";
-// ===============================================================================
-//    Topbar component that includes the logo, search bar, notification icon, and user profile section
-// ===============================================================================
-const Topbar = () => {
+
+interface TopbarProps {
+  onMenuClick: () => void;
+}
+
+const Topbar = ({ onMenuClick }: TopbarProps) => {
   return (
     <div className="topbar">
       <div className="topbar__left">
@@ -12,6 +14,7 @@ const Topbar = () => {
           <img src="/Union.png" alt="Lendsqr Logo" />
           <h1 className="topbar__logo">lendsqr</h1>
         </div>
+
         <div className="topbar__search">
           <input type="text" placeholder="Search for anything" />
           <span className="topbar__search-icon">
@@ -22,21 +25,26 @@ const Topbar = () => {
 
       <div className="topbar__right">
         <span className="docs-link">Docs</span>
+
         <span>
           <FaRegBell size={20} />
         </span>
+
         <div className="user">
           <div>
             <img src="/Image1.png" alt="User Avatar" className="avatar" />
           </div>
+
           <span style={{ fontSize: "14px" }}>Adedeji</span>
+
           <span>
             <TiArrowSortedDown size={16} className="header_arrow" />
           </span>
         </div>
       </div>
 
-      <div className="mobile-menu">
+      {/* MOBILE MENU */}
+      <div className="mobile-menu" onClick={onMenuClick}>
         <IoMdMenu size={30} />
       </div>
     </div>

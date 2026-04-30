@@ -1,32 +1,84 @@
-# Lendsqr Frontend Test (React + TypeScript + Vite)
+# Lendsqr Frontend Engineering Assessment
 
-This project is a frontend implementation of the Lendsqr Admin Dashboard as part of the Lendsqr Engineering Assessment.
+This project is a frontend implementation of the Lendsqr Admin Dashboard, built as part of the Lendsqr Frontend Engineering assessment.
 
-It focuses on building a pixel-close UI based on Figma, with reusable components, clean architecture, and responsive design.
-
----
-
-## 🚀 Tech Stack
-
-- React
-- TypeScript
-- Vite
-- SCSS
-- React Router DOM
-- React Icons
+The goal of this project is to replicate the provided Figma design with high visual accuracy while maintaining clean code structure, scalability, and best practices using modern frontend technologies.
 
 ---
 
-## 📌 Features Implemented
+## 🚀 Live Demo
 
-- Login Page UI
-- Dashboard Layout (Sidebar + Topbar)
-- Users Table with dynamic data rendering
-- Pagination with ellipsis support
-- Action Menu (View Details, Blacklist User, Activate User)
-- User Details Page (via navigation + localStorage)
-- Responsive design (desktop + tablet + mobile support)
-- Component-based architecture
+🔗 https://<your-vercel-link>
+
+---
+
+## 🧰 Tech Stack
+
+* React
+* TypeScript
+* Vite
+* SCSS
+* React Router DOM
+* React Icons
+
+---
+
+## 📌 Features
+
+* Login page UI
+* Dashboard layout (Sidebar + Topbar)
+* Users table with dynamic rendering
+* Pagination with ellipsis support
+* Action menu per user:
+
+  * View Details
+  * Blacklist User
+  * Activate User
+* User details page
+* LocalStorage for user data persistence
+* Responsive design (desktop, tablet, mobile)
+* Mobile sidebar toggle (hamburger menu)
+* Filter UI (visual implementation)
+
+---
+
+## 🧠 Key Implementation Decisions
+
+### 1. Data Handling
+
+User data is mocked and structured to simulate 500 records. This allows realistic pagination and UI behavior without relying on a live API.
+
+### 2. State Management
+
+Local component state was used for UI interactions such as:
+
+* Pagination
+* Dropdown actions
+* Sidebar toggle
+* Filter visibility
+
+### 3. Navigation & Persistence
+
+Selected user data is stored in `localStorage` and retrieved on the user details page to maintain state across navigation.
+
+### 4. Pagination Logic
+
+Pagination dynamically calculates visible pages and includes ellipsis (`...`) for better scalability with large datasets.
+
+### 5. Component Structure
+
+The app is broken into reusable components:
+
+* Sidebar
+* Topbar
+* UsersTable
+* ActionMenu
+
+This improves maintainability and scalability.
+
+### 6. Styling Approach
+
+SCSS was used for modular styling with nested structures to maintain readability and consistency.
 
 ---
 
@@ -35,15 +87,14 @@ It focuses on building a pixel-close UI based on Figma, with reusable components
 src/
 │
 ├── components/
-│ ├── Sidebar/
-│ ├── Topbar/
-│ ├── UsersTable/
-│  
+│   ├── Sidebar/
+│   ├── Topbar/
+│   ├── UsersTable/
 │
 ├── pages/
-│ ├── Login/
-│ ├── Users/
-│ ├── UserDetails/
+│   ├── Login/
+│   ├── Users/
+│   ├── UserDetails/
 │
 ├── data/
 ├── styles/
@@ -52,24 +103,26 @@ src/
 
 ---
 
-## 🧠 Key Implementation Details
+## 📱 Responsiveness
 
-- User data is currently mocked (500 records simulation ready)
-- Selected user is stored using `localStorage`
-- Pagination dynamically calculates pages and supports ellipsis
-- Action menu opens upward or downward based on viewport space
-- SCSS used for modular and maintainable styling
+The application is responsive across:
+
+* Desktop
+* Tablet
+* Mobile
+
+Mobile-specific improvements include:
+
+* Collapsible sidebar
+* Hidden search input
+* Optimized layout spacing
 
 ---
 
-## 🎯 Assessment Focus Areas
+## ⚠️ Notes
 
-- UI pixel accuracy to Figma
-- Clean React + TypeScript structure
-- Component reusability
-- Pagination logic
-- Responsive design
-- Code readability and organization
+* Filter functionality is implemented as a UI component but not connected to data logic.
+* Data is mocked for demonstration purposes.
 
 ---
 
@@ -79,15 +132,23 @@ src/
 
 ```bash
 npm install
-Run development server
+```
+
+### Run development server
+
+```bash
 npm run dev
-📦 Build for production
+```
+
+### Build for production
+
+```bash
 npm run build
-👨‍💻 Author
-
-Joshua Olagunju - Frontend Developer
-
+```
 
 ---
 
-```
+## 👨‍💻 Author
+
+Joshua Olagunju
+Frontend Developer

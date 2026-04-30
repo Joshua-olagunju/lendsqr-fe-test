@@ -4,17 +4,26 @@
   background: #ffffff;
   border-right: 1px solid #eee;
   padding: 20px 0;
-  margin: 100px 0 100px 0;
   position: fixed;
-  top: 0;
+  top: 100px; /* same as your topbar height */
   left: 0;
   overflow-y: auto;
-  z-index: 500;
+  z-index: 1000;
   font-family: "Work Sans", sans-serif;
-  font-weight: 400;
-  @media screen and (max-width: 1024px) {
-    display: none;
+  padding-top: 20px; /* normal spacing */
+  /* 👇 default hidden (mobile) */
+  transform: translateX(-100%);
+  transition: 0.3s ease;
+
+  &.open {
+    transform: translateX(0);
   }
+
+  /* 👇 DESKTOP */
+  @media (min-width: 1024px) {
+    transform: none;
+  }
+
   &__switch-org {
     display: flex;
     align-items: center;
@@ -93,17 +102,61 @@
     color: #aaa;
     cursor: not-allowed;
     padding: 10px 0;
-       display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 20px;
-      text-decoration: none;
-      color: rgba(84, 95, 125, 0.5);
-      font-size: 14px;
-      transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: rgba(9, 44, 141, 0.5);
+    font-size: 14px;
+    transition: all 0.2s;
 
     svg {
       color: #aaa;
+    }
+  }
+}
+
+.sidebar {
+  transform: translateX(-100%);
+  transition: 0.3s ease;
+
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    transform: none !important;
+  }
+}
+
+.sidebar__close {
+  display: none;
+}
+
+/* SHOW ONLY ON MOBILE */
+@media (max-width: 1024px) {
+  .sidebar__close {
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #213f7d;
+    z-index: 1001;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      color: #39cdcc;
+
+      transition: all 0.2s;
+      border-radius: 50px;
     }
   }
 }
